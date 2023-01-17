@@ -13,19 +13,9 @@ public class Team:Entity<int>
     {
         TeamName = teamName;
     }
-
-    public override bool Equals(object? obj)
-    {
-        return base.Equals(obj);
-    }
-
-    public override int GetHashCode()
-    {
-        return base.GetHashCode();
-    }
-
+    
     public override string ToString()
     {
-        return base.ToString();
+        return ID + "; " + TeamName;
     }
 }

@@ -25,6 +25,6 @@ public class Player : Student
 
     public override string ToString()
     {
-        return base.ToString();
+        return PlayerTeam;
     }
 }

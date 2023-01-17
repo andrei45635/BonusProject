@@ -1,25 +1,22 @@
-﻿using BonusProject.model;
+﻿using System.Threading.Channels;
+using BonusProject.model;
 using BonusProject.repository;
 using BonusProject.service;
+using BonusProject.user_interface;
 using BonusProject.validator;
 
 public class Program
 {
     public static void Main(string[] args)
     {
-        IRepository<int, ActivePlayer> activePlayerRepo = new ActivePlayerFileRepo(new ActivePlayerValidator(), "data/activePlayer.txt");
-        IRepository<int, Game> gameRepo = new GameFileRepo(new GameValidator(), "data/game.txt");
-        IRepository<int, Player> playerRepo = new PlayerFileRepo(new PlayerValidator(), "data/player.txt");
-        IRepository<int, Student> studentRepo = new StudentFileRepo(new StudentValidator(), "data/student.txt");
-        IRepository<int, Team> teamRepo = new TeamFileRepo(new TeamValidator(), "data/team.txt");
+        IRepository<int, ActivePlayer> activePlayerRepo = new ActivePlayerFileRepo(new ActivePlayerValidator(), "C:\\Users\\Andrei\\Desktop\\Facultate\\Semestrul 3\\MAP\\BonusProject\\data\\activePlayer.txt");
+        IRepository<int, Game> gameRepo = new GameFileRepo(new GameValidator(), "C:\\Users\\Andrei\\Desktop\\Facultate\\Semestrul 3\\MAP\\BonusProject\\data\\game.txt");
+        IRepository<int, Player> playerRepo = new PlayerFileRepo(new PlayerValidator(), "C:\\Users\\Andrei\\Desktop\\Facultate\\Semestrul 3\\MAP\\BonusProject\\data\\player.txt");
+        IRepository<int, Team> teamRepo = new TeamFileRepo(new TeamValidator(), "C:\\Users\\Andrei\\Desktop\\Facultate\\Semestrul 3\\MAP\\BonusProject\\data\\team.txt");
+        
+        UI userInterface = new UI(new Service(activePlayerRepo, gameRepo, playerRepo, teamRepo));
 
-        ServiceActivePlayer serviceActivePlayer = new ServiceActivePlayer(activePlayerRepo);
-        ServiceGame serviceGame = new ServiceGame(gameRepo);
-        ServicePlayer servicePlayer = new ServicePlayer(playerRepo);
-        ServiceStudent serviceStudent = new ServiceStudent(studentRepo);
-        ServiceTeam serviceTeam = new ServiceTeam(teamRepo);
-        
-        
+        userInterface.RunProgram();
     }
     
 }

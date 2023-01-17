@@ -29,18 +29,8 @@ public class ActivePlayer: Entity<int>
         PlayerType = playerType;
     }
 
-    public override bool Equals(object? obj)
-    {
-        return base.Equals(obj);
-    }
-
-    public override int GetHashCode()
-    {
-        return base.GetHashCode();
-    }
-
     public override string ToString()
     {
-        return base.ToString();
+        return this.ID + ";" + this.PlayerID + ";" + this.GameID + ";" + this.Score + ";" + this.PlayerType;
     }
 }

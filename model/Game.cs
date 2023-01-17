@@ -19,18 +19,8 @@ public class Game: Entity<int>
         Date = date;
     }
 
-    public override bool Equals(object? obj)
-    {
-        return base.Equals(obj);
-    }
-
-    public override int GetHashCode()
-    {
-        return base.GetHashCode();
-    }
-
     public override string ToString()
     {
-        return base.ToString();
+        return "Home Team: " + HomeTeam.TeamName + "\nAway Team: " + AwayTeam.TeamName + "\nDate: " + Date;
     }
 }
