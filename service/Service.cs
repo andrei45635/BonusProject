@@ -83,7 +83,7 @@ public class Service
     
     public Tuple<int, int> GetScoreFromGame(Game game)
     {
-        //use game 1
+        //use game 1 or 9
         var activePlayersFromHomeTeam = ActivePlayersFromTeam(game.HomeTeam);
         var activePlayersFromAwayTeam = ActivePlayersFromTeam(game.AwayTeam);
         if (activePlayersFromAwayTeam.Count == 0 || activePlayersFromHomeTeam.Count == 0)
