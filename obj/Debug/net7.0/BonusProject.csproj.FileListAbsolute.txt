@@ -1,0 +1,15 @@
+C:\Users\Andrei\Desktop\Facultate\Semestrul 3\MAP\BonusProject\bin\Debug\net7.0\BonusProject.exe
+C:\Users\Andrei\Desktop\Facultate\Semestrul 3\MAP\BonusProject\bin\Debug\net7.0\BonusProject.deps.json
+C:\Users\Andrei\Desktop\Facultate\Semestrul 3\MAP\BonusProject\bin\Debug\net7.0\BonusProject.runtimeconfig.json
+C:\Users\Andrei\Desktop\Facultate\Semestrul 3\MAP\BonusProject\bin\Debug\net7.0\BonusProject.dll
+C:\Users\Andrei\Desktop\Facultate\Semestrul 3\MAP\BonusProject\bin\Debug\net7.0\BonusProject.pdb
+C:\Users\Andrei\Desktop\Facultate\Semestrul 3\MAP\BonusProject\obj\Debug\net7.0\BonusProject.csproj.AssemblyReference.cache
+C:\Users\Andrei\Desktop\Facultate\Semestrul 3\MAP\BonusProject\obj\Debug\net7.0\BonusProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Andrei\Desktop\Facultate\Semestrul 3\MAP\BonusProject\obj\Debug\net7.0\BonusProject.AssemblyInfoInputs.cache
+C:\Users\Andrei\Desktop\Facultate\Semestrul 3\MAP\BonusProject\obj\Debug\net7.0\BonusProject.AssemblyInfo.cs
+C:\Users\Andrei\Desktop\Facultate\Semestrul 3\MAP\BonusProject\obj\Debug\net7.0\BonusProject.csproj.CoreCompileInputs.cache
+C:\Users\Andrei\Desktop\Facultate\Semestrul 3\MAP\BonusProject\obj\Debug\net7.0\BonusProject.dll
+C:\Users\Andrei\Desktop\Facultate\Semestrul 3\MAP\BonusProject\obj\Debug\net7.0\refint\BonusProject.dll
+C:\Users\Andrei\Desktop\Facultate\Semestrul 3\MAP\BonusProject\obj\Debug\net7.0\BonusProject.pdb
+C:\Users\Andrei\Desktop\Facultate\Semestrul 3\MAP\BonusProject\obj\Debug\net7.0\BonusProject.genruntimeconfig.cache
+C:\Users\Andrei\Desktop\Facultate\Semestrul 3\MAP\BonusProject\obj\Debug\net7.0\ref\BonusProject.dll
