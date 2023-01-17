@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices.JavaScript;
-
-namespace BonusProject.model;
+﻿namespace BonusProject.model;
 
 public class DelegateEntitiesFromFile
 {

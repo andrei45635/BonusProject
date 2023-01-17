@@ -16,9 +16,4 @@ public class Student : Entity<int>
         StudentName = studentName;
         StudentSchool = studentSchool;
     }
-
-    public override string ToString()
-    {
-        return base.ToString();
-    }
 }

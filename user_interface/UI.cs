@@ -17,12 +17,13 @@ public class UI
 
     public int ShowMenu()
     {
-        String input = Console.ReadLine();
-        int user_input = int.Parse(input);
         Console.WriteLine("1. Sa se afiseze toti jucatorii unei echipe date\n");
         Console.WriteLine("2. Sa se afiseze toti jucatorii activi ai unei echipe de la un anumit meci\n");
         Console.WriteLine("3. Sa se afiseze toate meciurile dintr-o anumita perioada calendaristica\n");
         Console.WriteLine("4. Sa se determine si sa se afiseze scorul de la un anumit meci\n");
+        Console.WriteLine("0. Exit the program\n");
+        String input = Console.ReadLine();
+        int user_input = int.Parse(input);
         return user_input;
     }
 
@@ -48,16 +49,9 @@ public class UI
                 case 4:
                     Task4();
                     break;
-                
-                case 5:
-                    foreach (var pl in _service.GetAllPlayers())
-                    {
-                        Console.WriteLine(pl.PlayerTeam);
-                    }
 
-                    break;
-                
                 case 0:
+                    Console.WriteLine("Bye!\n");
                     return;
                 
                 default:

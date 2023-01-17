@@ -39,11 +39,6 @@ public class Service
         return _gameRepo.FindAll().ToList();
     }
 
-    public List<Player> GetAllPlayers()
-    {
-        return _playerRepo.FindAll().ToList();
-    }
-    
     public Player GetPlayerByID(int id)
     {
         foreach (var pl in _playerRepo.FindAll())
@@ -61,19 +56,14 @@ public class Service
     {
         List<ActivePlayer> allActivePlayers = _activePlayerRepo.FindAll().ToList().Where(activePlayer => activePlayer.PlayerType == PlayerType.ACTIVE).ToList();
         List<ActivePlayer> activePlayersFromGame = allActivePlayers.Where(ap => ap.GameID == game.ID).ToList();
-        List<Player> playersFromTeam = GetAllPlayersFromTeam(team);
-        List<ActivePlayer> playersFromTeamGame = new List<ActivePlayer>();
-        foreach (var pl in activePlayersFromGame)
+        List<Player> allPlayers = _playerRepo.FindAll().ToList().Where(pl => pl.PlayerTeam == team.ID.ToString()).ToList();
+        List<ActivePlayer> activePlayersFromTeamGame =
+            (from ap in activePlayersFromGame join allP in allPlayers on ap.PlayerID equals allP.ID select ap).ToList();
+        if (activePlayersFromTeamGame.Count == 0)
         {
-            foreach (var p in playersFromTeam)
-            {
-                if (pl.ID == p.ID)
-                {
-                    playersFromTeamGame.Add(pl);
-                }
-            }
+            Console.WriteLine("No players from the given team played in the given game!\n");
         }
-        return playersFromTeamGame;
+        return activePlayersFromTeamGame;
     }
 
     public List<Game> GamesBetweenDates(DateTime date1, DateTime date2)
@@ -96,6 +86,11 @@ public class Service
         //use game 1
         var activePlayersFromHomeTeam = ActivePlayersFromTeam(game.HomeTeam);
         var activePlayersFromAwayTeam = ActivePlayersFromTeam(game.AwayTeam);
+        if (activePlayersFromAwayTeam.Count == 0 || activePlayersFromHomeTeam.Count == 0)
+        {
+            throw new Exception("No one played that game!\n");
+
+        }
         var scoreHomeTeam = activePlayersFromHomeTeam.Select(ap => ap.Score).Aggregate((a, b) => a + b);
         var scoreAwayTeam = activePlayersFromAwayTeam.Select(ap => ap.Score).Aggregate((a, b) => a + b);
         return new Tuple<int, int>(scoreHomeTeam, scoreAwayTeam);
