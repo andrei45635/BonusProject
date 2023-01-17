@@ -45,7 +45,19 @@ public class UI
                     Task3();
                     break;
             
+                case 4:
+                    Task4();
+                    break;
+                
                 case 5:
+                    foreach (var pl in _service.GetAllPlayers())
+                    {
+                        Console.WriteLine(pl.PlayerTeam);
+                    }
+
+                    break;
+                
+                case 0:
                     return;
                 
                 default:
@@ -127,5 +139,23 @@ public class UI
         {
             Console.WriteLine(game.ID + " ; " + game.Date);
         }
+    }
+
+    public void Task4()
+    {
+        Console.WriteLine("Input a game: ");
+        String g = Console.ReadLine();
+        int game = int.Parse(g);
+        Game theGame = null;
+
+        foreach (var gm in _service.GetAllGames())
+        {
+            if (game == gm.ID)
+            {
+                theGame = gm;
+            }
+        }
+        
+        Console.WriteLine(_service.GetScoreFromGame(theGame));
     }
 }

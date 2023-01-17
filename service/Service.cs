@@ -39,6 +39,11 @@ public class Service
         return _gameRepo.FindAll().ToList();
     }
 
+    public List<Player> GetAllPlayers()
+    {
+        return _playerRepo.FindAll().ToList();
+    }
+    
     public Player GetPlayerByID(int id)
     {
         foreach (var pl in _playerRepo.FindAll())
@@ -77,14 +82,22 @@ public class Service
         return allGames;
     }
 
-    public int GetScoreFromGame(Game game)
+    public List<ActivePlayer> ActivePlayersFromTeam(Team team)
     {
-        int Score = 0;
-
-        List<ActivePlayer> allActivePlayers = _activePlayerRepo.FindAll().ToList().Where(activePlayer => activePlayer.PlayerType == PlayerType.ACTIVE).ToList();
-        List<ActivePlayer> activePlayersFromGame = _activePlayerRepo.FindAll().ToList().Where(activePlayer => activePlayer.PlayerType == PlayerType.ACTIVE).ToList().Where(ap => ap.GameID == game.ID).ToList();
-        
-        
-        return Score;
+        List<ActivePlayer> activePlayers = _activePlayerRepo.FindAll().ToList();
+        List<Player> players = _playerRepo.FindAll().ToList();
+        var playersFromTeam = players.Where(p => int.Parse(p.PlayerTeam) == team.ID).ToList();
+        var activePlayersFromTeam = (from ap in activePlayers join p in playersFromTeam on ap.PlayerID equals p.ID select ap).ToList();
+        return activePlayersFromTeam.ToList();
+    }
+    
+    public Tuple<int, int> GetScoreFromGame(Game game)
+    {
+        //use game 1
+        var activePlayersFromHomeTeam = ActivePlayersFromTeam(game.HomeTeam);
+        var activePlayersFromAwayTeam = ActivePlayersFromTeam(game.AwayTeam);
+        var scoreHomeTeam = activePlayersFromHomeTeam.Select(ap => ap.Score).Aggregate((a, b) => a + b);
+        var scoreAwayTeam = activePlayersFromAwayTeam.Select(ap => ap.Score).Aggregate((a, b) => a + b);
+        return new Tuple<int, int>(scoreHomeTeam, scoreAwayTeam);
     }
 }
